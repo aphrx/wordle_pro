@@ -1,5 +1,5 @@
 
-![Logo](https://www.dailywordle.com/images/wordle_og_1200x630.png)
+![Logo](https://i.imgur.com/yXpRf60.png)
 
 The same Wordle game you know and love, but with a couple more features!
 
