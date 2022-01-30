@@ -16,7 +16,15 @@ function Board(props) {
             <div className='row' key={i}>
               {
                 row.map((e, ei) => {
-                  return <div key={ei} className={`tile empty ${i <  props.eval.length ? props.eval[i][ei] : null}`}>{e}</div>
+                  return <div 
+                    key={ei} 
+                    className={
+                      `tile 
+                      ${(i <  props.eval.length)?props.eval[i][ei]:null}
+                      ${e?'occupied':'empty'}
+                      `}>
+                        {e}
+                      </div>
                 })
               }
             </div>)

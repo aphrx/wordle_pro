@@ -15,11 +15,15 @@ function App() {
   const [toastVisible, setToastVisible] = useState(false)
   const [toastMessage, setToastMessage] = useState(null)
   const [randomWord, setRandomWord] = useState(LegibleWords[Math.floor(Math.random()*LegibleWords.length)])
+  const [correctLetters, setCorrectLetters] = useState([])
+  const [presentLetters, setPresentLetters] = useState([])
+  const [absentLetters, setAbsentLetters] = useState([])
+  const [hasWon, setHasWon] = useState(false)
 
   useEffect(() => {
     console.log(randomWord)
     if(toastVisible){
-      const timeId = setTimeout(() => {
+      setTimeout(() => {
         setToastVisible(false)
       }, 2000)
     }
@@ -38,6 +42,18 @@ function App() {
         if(pointer[0] < grid.length){
           pointer[0] += 1
         }
+        console.log(evalG[evalG.length-1])
+        console.log(Array(5).fill('correct'))
+        if(JSON.stringify(evalG[evalG.length-1]) == JSON.stringify(new Array(5).fill('correct'))){
+          console.log("done")
+          setHasWon(true)
+          setToastMessage("You won.")
+          setToastVisible(true)
+        }
+        if(pointer[0] == grid.length && !hasWon){
+          setToastMessage("You lost. Refresh to try again.")
+          setToastVisible(true)
+        }
       }
     }
     else{
@@ -47,19 +63,21 @@ function App() {
   }
 
   const handleLetter = (char) => {
-    let temp = [...grid]
-    if(char === '0'){
-      return handleSubmit()
-    }
-    else if(char === '1' && pointer[1] > 0){   
-      temp[pointer[0]][pointer[1]-1] = null
-      pointer[1] -= 1
-      setGrid(temp)
-    }
-    else if(pointer[1] < grid[1].length && char !== '1'){
-      temp[pointer[0]][pointer[1]] = char
-      pointer[1] += 1
-      setGrid(temp)
+    if(!hasWon && pointer[0] < grid.length){
+      let temp = [...grid]
+      if(char === '0'){
+        return handleSubmit()
+      }
+      else if(char === '1' && pointer[1] > 0){   
+        temp[pointer[0]][pointer[1]-1] = null
+        pointer[1] -= 1
+        setGrid(temp)
+      }
+      else if(pointer[1] < grid[1].length && char !== '1'){
+        temp[pointer[0]][pointer[1]] = char
+        pointer[1] += 1
+        setGrid(temp)
+      }
     }
   };
 
@@ -81,17 +99,35 @@ function App() {
 
   const flipWord = (word) => {
     let temp = []
+    let a = []
+    let p = []
+    let c =[]
     for(var i = 0; i < word.length; i++){
       if(word[i] === randomWord[i]){
         temp.push('correct')
+        // if(!correctLetters.includes(word[i])){
+        //   setCorrectLetters([...correctLetters].push(word[i]))
+        // }
+        c.push(word[i])
       }
       else if(randomWord.includes(word[i])){
         temp.push('present')
+        // if(!presentLetters.includes(word[i])){
+        //   setPresentLetters([...presentLetters].push(word[i]))
+        // }
+        p.push(word[i])
       }
       else{
         temp.push('absent')
+        // if(!absentLetters.includes(word[i])){
+        a.push(word[i])
+        // }
       }
     }
+    console.log(absentLetters)
+    setAbsentLetters([...absentLetters, ...a])
+    setPresentLetters([...presentLetters, ...p])
+    setCorrectLetters([...correctLetters, ...c])
     return temp
   }
 
@@ -106,7 +142,7 @@ function App() {
         </div>
       </div>
       <Board grid={grid} eval={evalGrid}/>
-      <Keyboard onClick={handleLetter}/>
+      <Keyboard onClick={handleLetter} correct={correctLetters} present={presentLetters} absent={absentLetters}/>
     </div>
   );
 }

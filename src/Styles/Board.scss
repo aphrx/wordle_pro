@@ -43,12 +43,19 @@
 
 .correct {
     background-color: rgb(83, 141, 78);
+    border: none !important
 }
 
 .present {
     background-color: rgb(181, 159, 59);
+    border: none !important
 }
 
 .absent {
     background-color: rgb(58, 58, 60);
+    border: none !important
+}
+
+.occupied {
+    border: 2px solid rgb(86, 87, 88);
 }
