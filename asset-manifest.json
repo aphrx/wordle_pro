@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/wordle/static/css/main.6a874cf1.css",
-    "main.js": "/wordle/static/js/main.1d583cf3.js",
+    "main.css": "/wordle/static/css/main.d5c5c653.css",
+    "main.js": "/wordle/static/js/main.cb656957.js",
     "index.html": "/wordle/index.html",
-    "main.6a874cf1.css.map": "/wordle/static/css/main.6a874cf1.css.map",
-    "main.1d583cf3.js.map": "/wordle/static/js/main.1d583cf3.js.map"
+    "main.d5c5c653.css.map": "/wordle/static/css/main.d5c5c653.css.map",
+    "main.cb656957.js.map": "/wordle/static/js/main.cb656957.js.map"
   },
   "entrypoints": [
-    "static/css/main.6a874cf1.css",
-    "static/js/main.1d583cf3.js"
+    "static/css/main.d5c5c653.css",
+    "static/js/main.cb656957.js"
   ]
 }
