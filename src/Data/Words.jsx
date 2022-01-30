@@ -1,4 +1,4 @@
-export const Words = [
+export const LegibleWords = [
   "cigar",
   "rebut",
   "sissy",
@@ -2313,7 +2313,9 @@ export const Words = [
   "rower",
   "artsy",
   "rural",
-  "shave",
+  "shave"]
+
+export const IllegibleWords = [
   "aahed",
   "aalii",
   "aargh",
@@ -12970,5 +12972,7 @@ export const Words = [
   "zygal",
   "zygon",
   "zymes",
-  "zymic",
+  "zymic"
 ];
+
+export const Words = [...IllegibleWords, ...LegibleWords]

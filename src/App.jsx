@@ -2,7 +2,7 @@ import './Styles/App.scss';
 import React, { useState, useEffect } from 'react';
 import Board from './Components/Board';
 import Keyboard from './Components/Keyboard';
-import { Words } from './Data/Words';
+import { LegibleWords, Words } from './Data/Words';
 
 function App() {
   const createEmptyBoard = (dimensions) => {
@@ -14,7 +14,7 @@ function App() {
   const [pointer, setPointer] = useState([0,0])
   const [toastVisible, setToastVisible] = useState(false)
   const [toastMessage, setToastMessage] = useState(null)
-  const [randomWord, setRandomWord] = useState(Words[Math.floor(Math.random()*Words.length)])
+  const [randomWord, setRandomWord] = useState(LegibleWords[Math.floor(Math.random()*LegibleWords.length)])
 
   useEffect(() => {
     console.log(randomWord)
