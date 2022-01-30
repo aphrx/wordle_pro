@@ -10,6 +10,7 @@ function App() {
   }
 
   const [grid, setGrid] = useState(createEmptyBoard([6,5]))
+  const [evalGrid, setEvalGrid] = useState([])
   const [pointer, setPointer] = useState([0,0])
   const [toastVisible, setToastVisible] = useState(false)
   const [toastMessage, setToastMessage] = useState(null)
@@ -24,13 +25,15 @@ function App() {
     }
   }, [toastVisible])
 
-  
+
   
   const handleSubmit = () => {
     if(pointer[1] === grid[0].length){
       let sword = grid[pointer[0]]
       if(verifyWord(sword)){
-        flipWord(sword, pointer[0])
+        let evalG = [...evalGrid]
+        evalG.push(flipWord(sword))
+        setEvalGrid(evalG)
         pointer[1] = 0
         if(pointer[0] < grid.length){
           pointer[0] += 1
@@ -57,7 +60,6 @@ function App() {
       temp[pointer[0]][pointer[1]] = char
       pointer[1] += 1
       setGrid(temp)
-      console.log(char);
     }
   };
 
@@ -77,17 +79,17 @@ function App() {
   //1 - Green
   //2 - Amber
 
-  const flipWord = (word, row) => {
+  const flipWord = (word) => {
     let temp = []
     for(var i = 0; i < word.length; i++){
       if(word[i] === randomWord[i]){
-        temp.push(1)
+        temp.push('correct')
       }
       else if(randomWord.includes(word[i])){
-        temp.push(2)
+        temp.push('present')
       }
       else{
-        temp.push(0)
+        temp.push('absent')
       }
     }
     return temp
@@ -103,7 +105,7 @@ function App() {
           {toastMessage}
         </div>
       </div>
-      <Board grid={grid} />
+      <Board grid={grid} eval={evalGrid}/>
       <Keyboard onClick={handleLetter}/>
     </div>
   );

@@ -6,8 +6,9 @@ function Board(props) {
   // const [grid, setGrid] = useState([6,5])
 
   return (
+    
     <div className='board-container'>
-      {console.log(props.grid)}
+      {console.log(props.eval)}
       <div className='board'>
         {
           props.grid.map((row, i) => {
@@ -15,7 +16,7 @@ function Board(props) {
             <div className='row' key={i}>
               {
                 row.map((e, ei) => {
-                  return <div key={ei} className='tile empty'>{e}</div>
+                  return <div key={ei} className={`tile empty ${i <  props.eval.length ? props.eval[i][ei] : null}`}>{e}</div>
                 })
               }
             </div>)
