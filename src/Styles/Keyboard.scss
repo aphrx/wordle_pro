@@ -1,6 +1,8 @@
 .key-row {
-    display: flex;
+    display: inline-flex;
     width: 100%;
+    align-items: center;
+    justify-content: center;
     margin: 0 auto 8px;
     touch-action: manipulation;
 }
@@ -8,12 +10,12 @@
 .key {
     background-color: rgb(129, 131, 132);
     font-family: inherit;
-    font-weight: bold;
+    // font-weight: bold;
     border: 0;
     padding: 0;
     margin: 0 6px 0 0;
     height: 58px;
-    width: 20px;
+    max-width: 43px;
     border-radius: 4px;
     cursor: pointer;
     user-select: none;
@@ -28,12 +30,12 @@
 .key-lg {
     background-color: rgb(129, 131, 132);
     font-family: inherit;
-    font-weight: bold;
+    // font-weight: bold;
     border: 0;
     padding: 0;
     margin: 0 6px 0 0;
     height: 58px;
-    min-width: 60px;
+    max-width: 65px;
     border-radius: 4px;
     cursor: pointer;
     user-select: none;
@@ -46,8 +48,7 @@
 }
 
 .keyboard {
-    display: block;
-    margin: 0 8px;
+    // margin: 0 8px;
     user-select: none;
 }
 
