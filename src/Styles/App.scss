@@ -8,12 +8,9 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;  
-  color: white;
+  
   font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: 0.2rem;
-  text-transform: uppercase;
+  
   position: absolute;
   left: 0;
   right: 0;
@@ -26,7 +23,7 @@ body {
 
 .App-header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgb(58, 58, 60);
@@ -34,6 +31,7 @@ body {
 
 .toast {
   position: absolute;
+  color:white;
   top: 10%;
   left: 50%;
   transform: translate(-50%, 0);
@@ -50,4 +48,24 @@ body {
   width: fit-content;
   justify-items: center;
   align-items: center;
+}
+
+.icon {
+  color: rgb(58, 58, 60);
+  display: flex;
+  padding: 20px;
+  font-size: 25px;
+}
+
+.title {
+  display: flex;
+  font-size: 36px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
+
+.wordle {
+  display: block;
 }
